@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   return runApp(
@@ -15,10 +16,16 @@ void main() {
   );
 }
 
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  @override
+  _DicePageState createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  int leftDiceNumber = 1;
+
   @override
   Widget build(BuildContext context) {
-    var leftDiceNumber = 5;
 
     return Center(
       child: Row(
@@ -26,7 +33,9 @@ class DicePage extends StatelessWidget {
           Expanded(
             child: FlatButton(
               onPressed: () {
-                print('left button was pressed.');
+                setState((){
+                  leftDiceNumber = 5;
+                });
               },
               child: Image.asset('images/dice$leftDiceNumber.png'),
             ),
@@ -44,3 +53,4 @@ class DicePage extends StatelessWidget {
     );
   }
 }
+
